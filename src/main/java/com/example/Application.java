@@ -1,5 +1,9 @@
-package com.example.lab3;
+package com.example;
 
+import com.example.lab3.AddressBook;
+import com.example.lab3.AddressBookRepository;
+import com.example.lab3.BuddyInfo;
+import com.example.lab3.BuddyInfoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
