@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class AddressBookController {
     @Autowired
@@ -23,32 +26,35 @@ public class AddressBookController {
 
     @PostMapping("/createAD")
     public String display(@ModelAttribute AddressBook ad, Model model){
-        //AddressBook aBook = new AddressBook();
-
-       /* for (BuddyInfo buddy:
-                buddyRepo.findAll()) {
-            aBook.addBuddy(buddy);
-
-        }*/
         repo.save(ad);
+        List<String> adrbooks = new ArrayList<>();
 
-        model.addAttribute("newAddressBook",ad);
+        for(AddressBook b: repo.findAll()){
+            adrbooks.add("AddressBook Id: " + b.getId());
+        }
+        model.addAttribute("list",adrbooks);
+
         return "AddressBook";
     }
 
     @GetMapping("/createBud")
-    public Iterable<BuddyInfo> findBuddy(){
-        return buddyRepo.findAll();
+    public String createBuddy(Model model){
+
+        model.addAttribute("newBuddyInfo", new BuddyInfo());
+
+        //buddyRepo.findAll();
+        return "BuddyInfo";
     }
 
     @PostMapping("/createBud")
-    public void newBuddy(@RequestParam(value="name") String name,
+    public String newBuddy(@RequestParam(value="name") String name,
                          @RequestParam(value="age") int age,
-                         @RequestParam(value="bookid") int bid){
+                         @RequestParam(value="bookId") int bid){
         BuddyInfo b = new BuddyInfo(name, age);
         AddressBook a = repo.findById(bid);
         a.addBuddy(b);
         buddyRepo.save(b);
+        return "ViewBuddyInfos";
     }
 
 

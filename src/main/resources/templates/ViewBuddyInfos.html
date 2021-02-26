@@ -8,14 +8,12 @@
 
 
 
-<h1>Address Books</h1>
+<h1>Add Buddy</h1>
+
 <ol>
     <li th:each="item : ${list}" th:text = "${item}"></li>
 </ol>
 
-<form action="#" th:action="@{/createAD}" th:object="${AddressBook}" method="post">
-    <p><input type="submit" value="Create AddressBook" /></p>
-</form>
 
 </body>
 </html>

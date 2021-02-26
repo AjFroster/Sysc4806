@@ -1,19 +1,25 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Getting Started: Handling Form Submission</title>
 </head>
 <body>
 
 
 
 <h1>Add Buddy</h1>
-<form action="#" th:action="@{/createBud}" th:object="${BuddyInfo}" method="post">
+
+<ol>
+    <li th:each="item : ${list}" th:text = "${item}"></li>
+</ol>
+
+<form action="#" th:action="@{/createBud}" th:object="${newBuddyInfo}" method="post">
     <p>Name: <input type="text" th:field="*{name}" /></p>
     <p>Age: <input type="text" th:field="*{age}" /></p>
-    <p>BookID: <input type="text" th:field="*{bookid}" /></p>
+    <p>BookID: <input type="text" name = "bookId"></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
+
 </body>
 </html>
