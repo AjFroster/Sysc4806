@@ -33,7 +33,7 @@ var createAD = {
         var list = document.createElement("ul");
         for( book in books) {
             var text = "Name: " + books[book].name;
-            var listItem = document.createElement("li");
+            var listItem = document.createElement("l");
             var textItem = document.createTextNode(text);
             listItem.appendChild(textItem);
             list.appendChild(listItem);
